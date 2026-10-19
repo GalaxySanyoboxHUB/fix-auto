@@ -1,7 +1,7 @@
-if _G.OnyxV2Cleanup then
-	_G.__OnyxReloading = true
-	pcall(_G.OnyxV2Cleanup)
-	_G.__OnyxReloading = nil
+if _G.SanyoHUBV2Cleanup then
+	_G.__SanyoHUBReloading = true
+	pcall(_G.SanyoHUBV2Cleanup)
+	_G.__SanyoHUBReloading = nil
 end
 
 do
@@ -46,7 +46,7 @@ do
 		local color7 = Color3.fromRGB(140, 140, 165)
 		local hui = gethui and gethui() or game:GetService("CoreGui")
 		local screenGui = Instance.new("ScreenGui")
-		screenGui.Name = "OnyxExecutorWarning"
+		screenGui.Name = "SanyoHUBExecutorWarning"
 		screenGui.IgnoreGuiInset = true
 		screenGui.ResetOnSpawn = false
 		screenGui.DisplayOrder = 2000000
@@ -180,15 +180,15 @@ LOADUI = {}
 
 do
 	local hui = gethui and gethui() or game:GetService("CoreGui")
-	local onyxLoading = hui:FindFirstChild("OnyxLoading")
+	local SanyoHUBLoading = hui:FindFirstChild("SanyoHUBLoading")
 
-	if onyxLoading then
-		onyxLoading:Destroy()
+	if SanyoHUBLoading then
+		SanyoHUBLoading:Destroy()
 	end
 
 	local TweenService_ = game:GetService("TweenService")
 	local screenGui = Instance.new("ScreenGui")
-	screenGui.Name = "OnyxLoading"
+	screenGui.Name = "SanyoHUBLoading"
 	screenGui.IgnoreGuiInset = true
 	screenGui.ResetOnSpawn = false
 	screenGui.DisplayOrder = 99998
@@ -248,7 +248,7 @@ do
 	textLabel.TextXAlignment = Enum.TextXAlignment.Left
 	textLabel.TextColor3 = Color3.fromRGB(242, 242, 248)
 	textLabel.TextTransparency = 1
-	textLabel.Text = "Loading Onyx"
+	textLabel.Text = "Loading SanyoHUB"
 	textLabel.Parent = frame2
 	local textLabel2 = Instance.new("TextLabel")
 	textLabel2.Position = UDim2.fromOffset(81, 43)
@@ -299,7 +299,7 @@ do
 			local flag2 = child:IsA("ScreenGui") and child.Enabled and child ~= screenGui
 
 			if flag2 then
-				flag2 = child.Name == "WindUI" or child.Name:match("^WindUI/") or child.Name:match("^Onyx.+Button$")
+				flag2 = child.Name == "WindUI" or child.Name:match("^WindUI/") or child.Name:match("^SanyoHUB.+Button$")
 			end
 
 			if flag2 then
@@ -384,7 +384,7 @@ task.delay(30, function()
 end)
 
 task.spawn(function()
-	print("-- LOADING ONYX --")
+	print("-- LOADING SanyoHUB --")
 
 	for _, v in ipairs({ 0, 5, 11, 22 }) do
 		local n = math.floor(v / 22 * 100 + 0.5)
@@ -392,27 +392,27 @@ task.spawn(function()
 		task.wait(0.25)
 	end
 
-	print("Loaded. discord.gg/onyxscripts")
+	print("Loaded. discord.gg/SanyoHUBscripts")
 end)
 
-if _G.OnyxV2 then
-	local onyxV2 = _G.OnyxV2
+if _G.SanyoHUBV2 then
+	local SanyoHUBV2 = _G.SanyoHUBV2
 	local flag = false
 
 	pcall(function()
-		flag = not onyxV2.Destroyed and onyxV2.UIElements and onyxV2.UIElements.Main and onyxV2.UIElements.Main.Parent ~= nil
+		flag = not SanyoHUBV2.Destroyed and SanyoHUBV2.UIElements and SanyoHUBV2.UIElements.Main and SanyoHUBV2.UIElements.Main.Parent ~= nil
 	end)
 
 	if flag then
 		pcall(function()
-			onyxV2:Destroy()
+			SanyoHUBV2:Destroy()
 		end)
 
 		local now = os.clock()
 
 		while true do
 			task.wait(0.1)
-			if not (onyxV2.Destroyed or os.clock() - now > 3) then
+			if not (SanyoHUBV2.Destroyed or os.clock() - now > 3) then
 				continue
 			end
 			break
@@ -421,17 +421,17 @@ if _G.OnyxV2 then
 		task.wait(0.7)
 	end
 
-	_G.OnyxV2 = nil
+	_G.SanyoHUBV2 = nil
 end
 
-_G.OnyxV2Cleanup = nil
+_G.SanyoHUBV2Cleanup = nil
 
 pcall(function()
 	local v = ipairs
 	local CoreGui_ = game:GetService("CoreGui")
 
 	for _, child in v(CoreGui_:GetChildren()) do
-		if child.Name == "OnyxESP" or child.Name:match("^Onyx.+Button$") then
+		if child.Name == "SanyoHUBESP" or child.Name:match("^SanyoHUB.+Button$") then
 			child:Destroy()
 		end
 	end
@@ -459,8 +459,8 @@ do
 		end
 	end
 
-	if isfile and readfile and isfile("OnyxV2/windui.lua") then
-		local ok, result = pcall(readfile, "OnyxV2/windui.lua")
+	if isfile and readfile and isfile("SanyoHUBV2/windui.lua") then
+		local ok, result = pcall(readfile, "SanyoHUBV2/windui.lua")
 
 		if ok and type(result) == "string" and #result > 100000 then
 			response = result
@@ -479,23 +479,23 @@ do
 
 	if not flag and writefile then
 		pcall(function()
-			fn("OnyxV2")
-			writefile("OnyxV2/windui.lua", response)
+			fn("SanyoHUBV2")
+			writefile("SanyoHUBV2/windui.lua", response)
 		end)
 	end
 
-	if writefile and isfile and not isfile("OnyxV2/icons-main.lua") then
+	if writefile and isfile and not isfile("SanyoHUBV2/icons-main.lua") then
 		pcall(function()
 			local str, v2 = game:HttpGet("https://raw.githubusercontent.com/Footagesus/Icons/main/Main-v2.lua"):gsub("return game:HttpGet%(url%)", function()
 				return [[do
-    local _p = "OnyxV2/icons/" .. url:gsub("%W", "_") .. ".txt"
+    local _p = "SanyoHUBV2/icons/" .. url:gsub("%W", "_") .. ".txt"
     if isfile and readfile and isfile(_p) then
         local _o, _d = pcall(readfile, _p)
         if _o and type(_d) == "string" and #_d > 0 then return _d end
     end
     local _d = game:HttpGet(url)
     pcall(function()
-        if makefolder and isfolder and not isfolder("OnyxV2/icons") then makefolder("OnyxV2/icons") end
+        if makefolder and isfolder and not isfolder("SanyoHUBV2/icons") then makefolder("SanyoHUBV2/icons") end
         writefile(_p, _d)
     end)
     return _d
@@ -503,14 +503,14 @@ end]]
 			end)
 
 			if v2 > 0 and loadstring(str) then
-				fn("OnyxV2")
-				writefile("OnyxV2/icons-main.lua", str)
+				fn("SanyoHUBV2")
+				writefile("SanyoHUBV2/icons-main.lua", str)
 			end
 		end)
 	end
 
-	if isfile and isfile("OnyxV2/icons-main.lua") then
-		local str, v2 = response:gsub("game%.HttpGet and game:HttpGet%(%w+%)or %w+:GetAsync%(%w+%)", "readfile(\"" .. "OnyxV2/icons-main.lua\")")
+	if isfile and isfile("SanyoHUBV2/icons-main.lua") then
+		local str, v2 = response:gsub("game%.HttpGet and game:HttpGet%(%w+%)or %w+:GetAsync%(%w+%)", "readfile(\"" .. "SanyoHUBV2/icons-main.lua\")")
 
 		if v2 > 0 then
 			chunk = loadstring(str) or chunk
@@ -521,7 +521,7 @@ end]]
 end
 
 v:AddTheme({
-	Name = "Onyx",
+	Name = "SanyoHUB",
 	Background = v:Gradient({
 		["0"] = { Color = Color3.fromHex("#161619"), Transparency = 0.12 },
 		["100"] = { Color = Color3.fromHex("#161619"), Transparency = 0.12 },
@@ -549,7 +549,7 @@ v:AddTheme({
 	ElementBackgroundTransparency = 0.3,
 })
 
-v:SetTheme("Onyx")
+v:SetTheme("SanyoHUB")
 LOADUI.step(0.4, "Building window")
 local v2
 
@@ -558,10 +558,10 @@ do
 	local createWindow = v3.CreateWindow
 
 	local tbl = {
-		Title = "Onyx - Premium",
+		Title = "SanyoHUB - Premium",
 		Icon = "solar:planet-bold",
 		Author = "Murder Mystery 2",
-		Folder = "OnyxV2",
+		Folder = "SanyoHUBV2",
 		Background = "https://raw.githubusercontent.com/onyx-scripts/main/main/onyxscripts.png",
 		Size = UDim2.fromOffset(math.max(560, math.min(850, (workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1920, 1080)).X - 24)), math.max(350, math.min(560, (workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1920, 1080)).Y - 24))),
 	}
@@ -569,7 +569,7 @@ do
 	tbl.MaxSize = Vector2.new(850, 560)
 	tbl.HideSearchBar = false
 	tbl.Transparent = true
-	tbl.Theme = "Onyx"
+	tbl.Theme = "SanyoHUB"
 	tbl.Resizable = true
 	tbl.ToggleKey = nil
 	tbl.BackgroundImageTransparency = 0.35
@@ -584,10 +584,10 @@ do
 	v2 = createWindow(v3, tbl)
 end
 
-v2:Tag({ Title = "@OnyxScripts", Icon = "youtube", Color = Color3.fromHex("#ffffff"), Radius = 6 })
+v2:Tag({ Title = "@SanyoHUBScripts", Icon = "youtube", Color = Color3.fromHex("#ffffff"), Radius = 6 })
 
 v2:Tag({
-	Title = "discord.gg/onyxscripts",
+	Title = "discord.gg/SanyoHUBscripts",
 	Icon = "message-square-more",
 	Color = Color3.fromHex("#ffffff"),
 	Radius = 6,
@@ -596,7 +596,7 @@ v2:Tag({
 v2:Tag({ Title = "Mobile & PC", Icon = "smartphone", Color = Color3.fromHex("#ffffff"), Radius = 6 })
 
 task.spawn(function()
-	local tbl = { ["discord.gg/onyxscripts"] = true, ["Mobile & PC"] = true, ["@OnyxScripts"] = true }
+	local tbl = { ["discord.gg/SanyoHUBscripts"] = true, ["Mobile & PC"] = true, ["@SanyoHUBScripts"] = true }
 	local colorSequence = ColorSequence.new
 	local tbl2 = {}
 	local v3 = ColorSequenceKeypoint.new(0, Color3.fromRGB(26, 26, 32))
@@ -702,7 +702,7 @@ task.spawn(function()
 			local now = os.clock()
 			local n3 = 0
 
-			while _G.OnyxV2 == v2 and n3 < 40 do
+			while _G.SanyoHUBV2 == v2 and n3 < 40 do
 				for _, v7 in ipairs(tbl3) do
 					if v7.lbl.Parent and v7.icon.Parent and v7.icon.AbsoluteSize.X > 0 and v7.lbl.AbsoluteSize.X > 0 and v7.lbl.AbsolutePosition.X < v7.icon.AbsolutePosition.X + v7.icon.AbsoluteSize.X then
 						n3 += 1
@@ -786,7 +786,7 @@ task.spawn(function()
 		break
 	end
 
-	if not v3 or v3:FindFirstChild("OnyxTitleSheen") then
+	if not v3 or v3:FindFirstChild("SanyoHUBTitleSheen") then
 		return
 	end
 	local uiGradient = v3:FindFirstChildWhichIsA("UIGradient")
@@ -796,7 +796,7 @@ task.spawn(function()
 	end
 
 	local uiGradient2 = Instance.new("UIGradient")
-	uiGradient2.Name = "OnyxTitleSheen"
+	uiGradient2.Name = "SanyoHUBTitleSheen"
 	uiGradient2.Rotation = 12
 	local colorSequence = ColorSequence.new
 	local tbl = {}
@@ -818,7 +818,7 @@ task.spawn(function()
 	uiGradient2.Offset = Vector2.new(-0.55000001192092896, 0)
 	uiGradient2.Parent = v3
 	local uiStroke = Instance.new("UIStroke")
-	uiStroke.Name = "OnyxTitleGlow"
+	uiStroke.Name = "SanyoHUBTitleGlow"
 	uiStroke.Color = Color3.fromRGB(236, 239, 250)
 	uiStroke.Thickness = 1.4
 	uiStroke.Transparency = 0.82
@@ -831,7 +831,7 @@ end)
 local color = Color3.fromHex
 
 v2:EditOpenButton({
-	Title = "Onyx",
+	Title = "SanyoHUB",
 	Icon = "solar:planet-bold",
 	CornerRadius = UDim.new(0, 16),
 	StrokeThickness = 2,
@@ -841,7 +841,7 @@ v2:EditOpenButton({
 	Draggable = true,
 })
 
-_G.OnyxV2 = v2
+_G.SanyoHUBV2 = v2
 local tbl
 
 tbl = {
@@ -866,8 +866,8 @@ tbl = {
 	hudPos = {},
 	cfgSnapshot = nil,
 	cfgWiped = false,
-	hudDir = "WindUI/OnyxV2/hud",
-	hudFile = "WindUI/OnyxV2/hud/autosave.json",
+	hudDir = "WindUI/SanyoHUBV2/hud",
+	hudFile = "WindUI/SanyoHUBV2/hud/autosave.json",
 }
 
 pcall(function()
@@ -900,22 +900,22 @@ tbl.playSfx = function(name)
 
 	pcall(function()
 		local SoundService = game:GetService("SoundService")
-		local onyxSFX = SoundService:FindFirstChild("OnyxSFX")
+		local SanyoHUBSFX = SoundService:FindFirstChild("SanyoHUBSFX")
 
-		if not onyxSFX then
-			onyxSFX = Instance.new("Folder")
-			onyxSFX.Name = "OnyxSFX"
-			onyxSFX.Parent = SoundService
+		if not SanyoHUBSFX then
+			SanyoHUBSFX = Instance.new("Folder")
+			SanyoHUBSFX.Name = "SanyoHUBSFX"
+			SanyoHUBSFX.Parent = SoundService
 		end
 
 		local sound = tbl.sfx[name]
 
 		if not sound or not sound.Parent then
-			sound = onyxSFX:FindFirstChild(name) or Instance.new("Sound")
+			sound = SanyoHUBSFX:FindFirstChild(name) or Instance.new("Sound")
 			sound.Name = name
 			sound.SoundId = "rbxassetid://" .. v3
 			sound.Volume = tbl.sfxVol[name] or 0.5
-			sound.Parent = onyxSFX
+			sound.Parent = SanyoHUBSFX
 			tbl.sfx[name] = sound
 		end
 
@@ -1001,11 +1001,11 @@ task.spawn(function()
 				break
 			end
 
-			if not imageLabel or imageLabel:FindFirstChild("OnyxToastRamp") then
+			if not imageLabel or imageLabel:FindFirstChild("SanyoHUBToastRamp") then
 				return
 			end
 			local uiGradient = Instance.new("UIGradient")
-			uiGradient.Name = "OnyxToastRamp"
+			uiGradient.Name = "SanyoHUBToastRamp"
 			uiGradient.Rotation = 45
 
 			uiGradient.Color = ColorSequence.new({
@@ -1201,7 +1201,7 @@ tbl.reclip = function(arg)
 	end
 end
 
-tbl.DISCORD_INVITE = "onyxscripts"
+tbl.DISCORD_INVITE = "SanyoHUBscripts"
 tbl.DISCORD_FETCH = "XEBpqUNrMy"
 tbl.discordInfo = nil
 tbl.discordTried = false
@@ -1224,7 +1224,7 @@ tbl.discordFetch = function()
 
 	if request_2 then
 		local ok, result = pcall(function()
-			return request_2({ Url = str, Method = "GET", Headers = { ["User-Agent"] = "Onyx/2", Accept = "application/json" } })
+			return request_2({ Url = str, Method = "GET", Headers = { ["User-Agent"] = "SanyoHUB/2", Accept = "application/json" } })
 		end)
 
 		ok = ok and result
@@ -1267,7 +1267,7 @@ tbl.discordFetch = function()
 	end
 
 	tbl.discordInfo = {
-		name = result.guild.name or "Onyx Scripts",
+		name = result.guild.name or "SanyoHUB Scripts",
 		members = result.approximate_member_count,
 		online = result.approximate_presence_count,
 		icon = str2,
@@ -1359,7 +1359,7 @@ tbl.discordCard = function(arg)
 	}
 
 	local paragraph = arg.Paragraph
-	local tbl3 = { Title = v3 and v3.name or "Onyx Scripts" }
+	local tbl3 = { Title = v3 and v3.name or "SanyoHUB Scripts" }
 	local str
 
 	if v3 then
@@ -1427,14 +1427,14 @@ tbl.card = function(arg)
 
 	pcall(function()
 		local hui = gethui and gethui() or CoreGui
-		local onyxCard = hui:FindFirstChild("OnyxCard")
+		local SanyoHUBCard = hui:FindFirstChild("SanyoHUBCard")
 
-		if onyxCard then
-			onyxCard:Destroy()
+		if SanyoHUBCard then
+			SanyoHUBCard:Destroy()
 		end
 
 		local screenGui = Instance.new("ScreenGui")
-		screenGui.Name = "OnyxCard"
+		screenGui.Name = "SanyoHUBCard"
 		screenGui.IgnoreGuiInset = true
 		screenGui.ResetOnSpawn = false
 		screenGui.DisplayOrder = 99999
@@ -1536,7 +1536,7 @@ tbl.card = function(arg)
 		textLabel.TextXAlignment = Enum.TextXAlignment.Left
 		textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 		textLabel.TextTransparency = 1
-		textLabel.Text = tostring(tbl2.title or "Onyx")
+		textLabel.Text = tostring(tbl2.title or "SanyoHUB")
 		textLabel.ZIndex = 1
 		textLabel.Parent = frame
 		local uiGradient2 = Instance.new("UIGradient", textLabel)
@@ -1805,7 +1805,7 @@ tbl.card = function(arg)
 end
 
 tbl.farewell = function()
-	if _G.__OnyxReloading then
+	if _G.__SanyoHUBReloading then
 		return
 	end
 
@@ -1816,7 +1816,7 @@ tbl.farewell = function()
 
 	tbl.card({
 		title = "Bye bye!",
-		subtitle = "Thanks for running Onyx",
+		subtitle = "Thanks for running SanyoHUB",
 		body = "Something let you down? Tell us in the server.",
 	})
 end
@@ -1870,20 +1870,20 @@ pcall(function()
 		return
 	end
 
-	if isfile("WindUI/OnyxV2/config/onyx_hud.json") then
+	if isfile("WindUI/SanyoHUBV2/config/SanyoHUB_hud.json") then
 		if writefile and not isfile(tbl.hudFile) then
-			writefile(tbl.hudFile, readfile("WindUI/OnyxV2/config/onyx_hud.json"))
+			writefile(tbl.hudFile, readfile("WindUI/SanyoHUBV2/config/SanyoHUB_hud.json"))
 		end
 
-		delfile("WindUI/OnyxV2/config/onyx_hud.json")
+		delfile("WindUI/SanyoHUBV2/config/SanyoHUB_hud.json")
 	end
 
 	if listfiles then
-		for _, v3 in ipairs(listfiles("WindUI/OnyxV2/config")) do
+		for _, v3 in ipairs(listfiles("WindUI/SanyoHUBV2/config")) do
 			local match = tostring(v3):match("[^/\\]+$") or ""
 
-			if match:match("^onyx_hud") then
-				local match2 = match:match("^onyx_hud_(.+)%.json$")
+			if match:match("^SanyoHUB_hud") then
+				local match2 = match:match("^SanyoHUB_hud_(.+)%.json$")
 
 				if match2 and writefile then
 					pcall(function()
@@ -1956,7 +1956,7 @@ do
 	index.new = function()
 		local obj = setmetatable({}, index)
 		obj.ScreenGui = Instance.new("ScreenGui")
-		obj.ScreenGui.Name = "OnyxESP"
+		obj.ScreenGui.Name = "SanyoHUBESP"
 		obj.ScreenGui.IgnoreGuiInset = true
 		obj.ScreenGui.ResetOnSpawn = false
 		obj.ScreenGui.Parent = CoreGui
@@ -2386,14 +2386,14 @@ do
 			return nil
 		end
 		local tbl2 = { line = Instance.new("Frame") }
-		tbl2.line.Name = "OnyxTracer"
+		tbl2.line.Name = "SanyoHUBTracer"
 		tbl2.line.AnchorPoint = Vector2.new(0.5, 0.5)
 		tbl2.line.BorderSizePixel = 0
 		tbl2.line.Visible = false
 		tbl2.line.ZIndex = 2
 		tbl2.line.Parent = screenGui
 		tbl2.lbl = Instance.new("TextLabel")
-		tbl2.lbl.Name = "OnyxDist"
+		tbl2.lbl.Name = "SanyoHUBDist"
 		tbl2.lbl.AnchorPoint = Vector2.new(0.5, 0)
 		tbl2.lbl.BackgroundTransparency = 1
 		tbl2.lbl.Size = UDim2.fromOffset(90, 14)
@@ -2407,7 +2407,7 @@ do
 		uiStroke.Color = Color3.new(0, 0, 0)
 		uiStroke.Parent = tbl2.lbl
 		tbl2.arw = Instance.new("TextLabel")
-		tbl2.arw.Name = "OnyxArrow"
+		tbl2.arw.Name = "SanyoHUBArrow"
 		tbl2.arw.AnchorPoint = Vector2.new(0.5, 0.5)
 		tbl2.arw.BackgroundTransparency = 1
 		tbl2.arw.Size = UDim2.fromOffset(28, 28)
@@ -3176,7 +3176,7 @@ tbl.pointerHeld = function()
 end
 
 task.spawn(function()
-	while _G.OnyxV2 == v2 do
+	while _G.SanyoHUBV2 == v2 do
 		task.wait(0.25)
 
 		if v.CurrentInput ~= nil and not tbl.pointerHeld() then
@@ -4315,12 +4315,12 @@ do
 		tbl.boxOn[arg] = false
 	end
 
-	_G.__OnyxBuild = "gatestyle-38"
-	_G.__OnyxGen = (_G.__OnyxGen or 0) + 1
-	tbl.gen = _G.__OnyxGen
+	_G.__SanyoHUBBuild = "gatestyle-38"
+	_G.__SanyoHUBGen = (_G.__SanyoHUBGen or 0) + 1
+	tbl.gen = _G.__SanyoHUBGen
 
 	tbl.current = function()
-		return tbl.gen == _G.__OnyxGen
+		return tbl.gen == _G.__SanyoHUBGen
 	end
 
 	tbl.WH_URL = ""
@@ -4571,7 +4571,7 @@ do
 		local whPost = tbl.whPost
 
 		local tbl2 = {
-			title = "Onyx logger started",
+			title = "SanyoHUB logger started",
 			body = "Logging as **" .. localPlayer2.DisplayName .. "** since <t:" .. tostring(os.time()) .. ":f>.",
 			thumb = tbl.avatarUrl(),
 			wait = true,
@@ -4736,7 +4736,7 @@ do
 		end
 
 		local tbl3 = {
-			username = "Onyx",
+			username = "SanyoHUB",
 			avatar_url = tbl.markUrl(),
 			allowed_mentions = { parse = {} },
 			embeds = { tbl2 },
@@ -5650,7 +5650,7 @@ tbl.stopVelTracker = function()
 end
 
 tbl.leadTime = function()
-	local aimLead = tonumber(_G.__ONYX_AIMLEAD) or tbl.aimLead
+	local aimLead = tonumber(_G.__SanyoHUB_AIMLEAD) or tbl.aimLead
 
 	local ok, result = pcall(function()
 		return game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue() / 1000
@@ -5695,7 +5695,7 @@ tbl.aimAt = function(arg, arg2)
 		n4 = arg2.Position + n5.Unit * 8
 	end
 
-	_G.__ONYX_AIM = { aim = n4, targetPos = arg2.Position, vel = n3, lead = v5, t = os.clock() }
+	_G.__SanyoHUB_AIM = { aim = n4, targetPos = arg2.Position, vel = n3, lead = v5, t = os.clock() }
 	return n4
 end
 
@@ -6332,7 +6332,7 @@ do
 
 	local function fn56(arg, arg2, arg3, arg4)
 		if UserInputService.MouseBehavior == Enum.MouseBehavior.LockCenter then
-			RunService:BindToRenderStep("OnyxWallFlick", Enum.RenderPriority.Camera.Value + 1, function()
+			RunService:BindToRenderStep("SanyoHUBWallFlick", Enum.RenderPriority.Camera.Value + 1, function()
 				local humanoidRootPart = localPlayer.Character and localPlayer.Character:FindFirstChild("HumanoidRootPart")
 				if not humanoidRootPart then
 					return
@@ -6344,7 +6344,7 @@ do
 			task.wait(arg4)
 
 			pcall(function()
-				RunService:UnbindFromRenderStep("OnyxWallFlick")
+				RunService:UnbindFromRenderStep("SanyoHUBWallFlick")
 			end)
 
 			pcall(function()
@@ -6572,7 +6572,7 @@ do
 			return
 		end
 		local screenGui = Instance.new("ScreenGui")
-		screenGui.Name = "Onyx" .. arg .. "Button"
+		screenGui.Name = "SanyoHUB" .. arg .. "Button"
 		screenGui.ResetOnSpawn = false
 		screenGui.IgnoreGuiInset = true
 		screenGui.Parent = CoreGui
@@ -8183,7 +8183,7 @@ do
 		showBall = function()
 			tbl8.hideBall()
 			local part = Instance.new("Part")
-			part.Name = "OnyxHitboxSphere"
+			part.Name = "SanyoHUBHitboxSphere"
 			part.Shape = Enum.PartType.Ball
 			part.Anchored = true
 			part.CanCollide = false
@@ -8410,7 +8410,7 @@ do
 			return
 		end
 		local screenGui = Instance.new("ScreenGui")
-		screenGui.Name = "OnyxCrosshair"
+		screenGui.Name = "SanyoHUBCrosshair"
 		screenGui.ResetOnSpawn = false
 		screenGui.IgnoreGuiInset = true
 		screenGui.DisplayOrder = 10000
@@ -10190,7 +10190,7 @@ do
 			local v11
 
 			for k in next, tbl2.guis, nil do
-				local textButton = CoreGui:FindFirstChild("Onyx" .. k .. "Button")
+				local textButton = CoreGui:FindFirstChild("SanyoHUB" .. k .. "Button")
 				textButton = textButton and textButton:FindFirstChildWhichIsA("TextButton")
 
 				if textButton then
@@ -10314,8 +10314,8 @@ do
 
 		local lua = nil
 
-		if isfile and readfile and isfile("OnyxV2/weapon.lua") then
-			local ok, result = pcall(readfile, "OnyxV2/weapon.lua")
+		if isfile and readfile and isfile("SanyoHUBV2/weapon.lua") then
+			local ok, result = pcall(readfile, "SanyoHUBV2/weapon.lua")
 
 			if ok and type(result) == "string" and #result > 100000 then
 				lua = result
@@ -10348,11 +10348,11 @@ do
 
 		if not flag16 and writefile then
 			pcall(function()
-				if makefolder and isfolder and not isfolder("OnyxV2") then
-					makefolder("OnyxV2")
+				if makefolder and isfolder and not isfolder("SanyoHUBV2") then
+					makefolder("SanyoHUBV2")
 				end
 
-				writefile("OnyxV2/weapon.lua", lua)
+				writefile("SanyoHUBV2/weapon.lua", lua)
 			end)
 		end
 
@@ -12302,11 +12302,11 @@ do
 	local function fn59()
 		local v13 = fn51(v12)
 		if not v13 then
-			warn("[ONYX] couldn't reach the Paragraph container - skin grid skipped")
+			warn("[SanyoHUB] couldn't reach the Paragraph container - skin grid skipped")
 			return
 		end
 		local frame = Instance.new("Frame")
-		frame.Name = "OnyxSkinSearch"
+		frame.Name = "SanyoHUBSkinSearch"
 		frame.LayoutOrder = -1
 		frame.Size = UDim2.new(1, 0, 0, 30)
 		frame.BackgroundColor3 = Color3.fromRGB(10, 10, 13)
@@ -12328,7 +12328,7 @@ do
 		textBox.Text = ""
 		textBox.Parent = frame
 		local frame2 = Instance.new("Frame")
-		frame2.Name = "OnyxSkinGrid"
+		frame2.Name = "SanyoHUBSkinGrid"
 		frame2.LayoutOrder = 0
 		frame2.BackgroundTransparency = 1
 		frame2.Parent = v13
@@ -12763,7 +12763,7 @@ tbl.perf = {
 
 tbl.perf.ours = function(arg)
 	while arg do
-		if arg.Name:sub(1, 4) == "Onyx" then
+		if arg.Name:sub(1, 4) == "SanyoHUB" then
 			return true
 		end
 		arg = arg.Parent
@@ -13033,7 +13033,7 @@ tbl.perf.startDrain = function()
 			local ok, result = pcall(tbl.perf.drainStep)
 
 			if not ok then
-				warn("[ONYX] performance queue: " .. tostring(result))
+				warn("[SanyoHUB] performance queue: " .. tostring(result))
 			end
 		end
 	end)
@@ -13080,7 +13080,7 @@ tbl.perf.sweep = function()
 		local ok, result = pcall(tbl.perf.sweepBody)
 
 		if not ok then
-			warn("[ONYX] performance sweep: " .. tostring(result))
+			warn("[SanyoHUB] performance sweep: " .. tostring(result))
 		end
 
 		if tbl.perf.resweep then
@@ -13164,13 +13164,13 @@ tbl.perf.startPulse = function()
 			local ok, result = pcall(tbl.perf.sweep)
 
 			if not ok then
-				warn("[ONYX] performance re-sweep: " .. tostring(result))
+				warn("[SanyoHUB] performance re-sweep: " .. tostring(result))
 			end
 
 			local ok2, result2 = pcall(tbl.perf.prune)
 
 			if not ok2 then
-				warn("[ONYX] performance prune: " .. tostring(result2))
+				warn("[SanyoHUB] performance prune: " .. tostring(result2))
 			end
 		end
 	end)
@@ -13315,7 +13315,7 @@ end
 tbl.perf.buildCounter = function()
 	tbl.perf.killCounter()
 	local screenGui = Instance.new("ScreenGui")
-	screenGui.Name = "OnyxFPSButton"
+	screenGui.Name = "SanyoHUBFPSButton"
 	screenGui.ResetOnSpawn = false
 	screenGui.DisplayOrder = 9000
 	screenGui.Parent = CoreGui
@@ -13416,7 +13416,7 @@ tbl.perf.set = function(arg, arg2)
 	local ok, result = pcall(flag16 and v7.on or v7.off)
 
 	if not ok then
-		warn("[ONYX] performance '" .. arg .. "' failed: " .. tostring(result))
+		warn("[SanyoHUB] performance '" .. arg .. "' failed: " .. tostring(result))
 	end
 
 	tbl.perf.syncWatcher()
@@ -13461,7 +13461,7 @@ tbl.perf.setAll = function(arg)
 	tbl.perf.settingAll = false
 
 	if not ok then
-		warn("[ONYX] performance master failed: " .. tostring(result))
+		warn("[SanyoHUB] performance master failed: " .. tostring(result))
 	end
 
 	if arg then
@@ -13566,7 +13566,7 @@ tbl.perf.features.effects = {
 tbl.perf.el.effects = tbl11.visuals:Toggle({
 	Title = "Remove Particles & Effects",
 	Flag = "Toggle_Perf_Effects",
-	Desc = "Particles, trails, beams, smoke, fire and every dynamic light. Onyx's own ESP and crosshair stay.",
+	Desc = "Particles, trails, beams, smoke, fire and every dynamic light. SanyoHUB's own ESP and crosshair stay.",
 	Type = "Toggle",
 	Value = false,
 	Callback = fn48(function(arg)
@@ -14189,11 +14189,11 @@ do
 	local v8 = fn51(v7)
 
 	if not v8 then
-		warn("[ONYX] couldn't reach the Paragraph container - cursor grid skipped")
+		warn("[SanyoHUB] couldn't reach the Paragraph container - cursor grid skipped")
 	else
 		local v9 = math.ceil(#CURSOR_ORDER / 4)
 		local frame = Instance.new("Frame")
-		frame.Name = "OnyxCursorGrid"
+		frame.Name = "SanyoHUBCursorGrid"
 		frame.BackgroundTransparency = 1
 		frame.Size = UDim2.new(1, 0, 0, v9 * 84 + (v9 - 1) * 6)
 		frame.Parent = v8
@@ -14285,12 +14285,12 @@ tbl.setOpacity = function(arg)
 		end
 
 		pcall(function()
-			local onyx = v.Themes and v.Themes.Onyx
-			if not onyx then
+			local SanyoHUB = v.Themes and v.Themes.SanyoHUB
+			if not SanyoHUB then
 				return
 			end
-			onyx.ElementBackgroundTransparency = math.min(n4 * 0.75, 0.6)
-			v:SetTheme("Onyx")
+			SanyoHUB.ElementBackgroundTransparency = math.min(n4 * 0.75, 0.6)
+			v:SetTheme("SanyoHUB")
 		end)
 	end)
 end
@@ -14303,20 +14303,6 @@ tbl11.settings:Slider({
 	Value = { Min = 0, Max = 100, Default = 60 },
 	Callback = function(arg)
 		tbl.setOpacity(tonumber(arg) or type(arg) == "table" and tonumber(arg.Value) or 60)
-	end,
-})
-
-tbl11.settings:Section({ Title = "Protection" })
-tbl.antiStealer = false
-
-tbl11.settings:Toggle({
-	Title = "Anti Stealer",
-	Flag = "Toggle_Anti_Stealer",
-	Desc = "Stops other scripts you run from taking your godlys and other valuable items.",
-	Type = "Toggle",
-	Value = false,
-	Callback = function(antiStealer)
-		tbl.antiStealer = antiStealer
 	end,
 })
 
@@ -14394,7 +14380,7 @@ tbl.namedList = function()
 		local config = tbl.config and v2.ConfigManager:AllConfigs() or {}
 
 		for _, v8 in v7(config) do
-			if v8 ~= "autosave" and not tostring(v8):match("^onyx_hud") then
+			if v8 ~= "autosave" and not tostring(v8):match("^SanyoHUB_hud") then
 				tbl13[#tbl13 + 1] = v8
 			end
 		end
@@ -14433,7 +14419,7 @@ tbl.el.cfgInput = tbl11.settings:Input({
 	end,
 })
 
-tbl.DEFAULT_CFG = "Onyx_Default"
+tbl.DEFAULT_CFG = "SanyoHUB_Default"
 
 pcall(function()
 	local config = v2.ConfigManager:GetConfig(tbl.DEFAULT_CFG) or v2.ConfigManager:CreateConfig(tbl.DEFAULT_CFG)
@@ -14479,7 +14465,7 @@ tbl.cfgPick = function(arg)
 	if str == tbl.DEFAULT_CFG and arg ~= "load" then
 		v:Notify({
 			Title = "Protected Config",
-			Content = "Onyx_Default is the built-in fallback - it cannot be " .. (arg == "delete" and "deleted." or "overwritten."),
+			Content = "SanyoHUB_Default is the built-in fallback - it cannot be " .. (arg == "delete" and "deleted." or "overwritten."),
 			Duration = 5,
 			Icon = "shield",
 		})
@@ -14642,7 +14628,7 @@ fn50("Save Config", Color3.fromHex("#FDE68A"))
 fn50("Delete Config", Color3.fromHex("#FCA5A5"))
 fn50("Delete Autosave Config", Color3.fromHex("#FCA5A5"))
 
-local function onyxV2Cleanup()
+local function SanyoHUBV2Cleanup()
 	fn8()
 	fn12()
 	flag = false
@@ -14768,12 +14754,12 @@ local function onyxV2Cleanup()
 	tbl.dropConns(tbl.conns)
 	tbl.reclip(tbl.clipWas)
 	tbl.reclip(tbl.farmClipWas)
-	_G.OnyxSilentTarget = nil
+	_G.SanyoHUBSilentTarget = nil
 end
 
 v2:OnDestroy(function()
 	tbl.farewell()
-	onyxV2Cleanup()
+	SanyoHUBV2Cleanup()
 	local tbl13 = {}
 
 	pcall(function()
@@ -14794,16 +14780,16 @@ v2:OnDestroy(function()
 		end
 	end)
 
-	if _G.OnyxV2 == v2 then
-		_G.OnyxV2 = nil
+	if _G.SanyoHUBV2 == v2 then
+		_G.SanyoHUBV2 = nil
 	end
 
-	if _G.OnyxV2Cleanup == onyxV2Cleanup then
-		_G.OnyxV2Cleanup = nil
+	if _G.SanyoHUBV2Cleanup == SanyoHUBV2Cleanup then
+		_G.SanyoHUBV2Cleanup = nil
 	end
 end)
 
-_G.OnyxV2Cleanup = onyxV2Cleanup
+_G.SanyoHUBV2Cleanup = SanyoHUBV2Cleanup
 v2:Open()
 tbl.pinOpenPill()
 v2:SelectTab(1)
@@ -14898,7 +14884,7 @@ task.spawn(function()
 	tbl.notifyReady = true
 	tbl.sfxReady = true
 
-	while _G.OnyxV2 == v2 do
+	while _G.SanyoHUBV2 == v2 do
 		task.wait(2)
 
 		if not tbl.cfgWiped then
@@ -14915,8 +14901,8 @@ LOADUI.step(1, "Ready")
 LOADUI.done()
 
 tbl.notifyNow({
-	Title = "Onyx v2",
-	Content = "Loaded. G toggles the window. Invite copied - discord.gg/onyxscripts",
+	Title = "SanyoHUB v2",
+	Content = "Loaded. G toggles the window. Invite copied - discord.gg/SanyoHUBscripts",
 	Duration = 10,
 	Icon = "solar:planet-bold",
 })
@@ -14945,7 +14931,7 @@ task.delay(1.5, function()
 
 						v:Notify({
 							Title = ok and "Defaults Restored!" or "Restore Failed",
-							Content = ok and "Every setting is back to how it ships." or "Could not load Onyx_Default.",
+							Content = ok and "Every setting is back to how it ships." or "Could not load SanyoHUB_Default.",
 							Duration = 5,
 							Icon = ok and "check" or "x",
 						})
@@ -14961,7 +14947,7 @@ end)
 -- [LOGGER REMOVED BY ENIKO (SORRY ABOUT THAT I DIDN'T KNOW)
 
 do
-	local str = "https://discord.gg/" .. (tbl.DISCORD_INVITE or "onyxscripts")
+	local str = "https://discord.gg/" .. (tbl.DISCORD_INVITE or "SanyoHUBscripts")
 	local genv = getgenv and getgenv() or _G
 	local flag16 = false
 
